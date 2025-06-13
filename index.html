@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capnitive AI - Innovating with Capability at the Core</title>
+    <!--
+        Tailwind CSS is loaded via CDN for rapid and responsive styling.
+        It provides utility classes to build modern designs efficiently.
+    -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inconsolata for a typewriter effect -->
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+            Apply 'Inconsolata' font globally for a unique, typewriter-like aesthetic.
+            Ensure smooth scrolling for navigation links within the page.
+            Set a dark background and light text color for the overall theme.
+        */
+        body {
+            font-family: 'Inconsolata', monospace; /* Primary font for a creative, typewriter feel */
+            background-color: #1a202c; /* Deep dark background */
+            color: #e2e8f0; /* Light text for contrast */
+            line-height: 1.6;
+        }
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+        /* Custom styles for elements that might need more specific control or unique effects */
+        .gradient-bg {
+            background: linear-gradient(to right, #4a00e0, #8e2de2); /* Deep purple to lighter purple gradient */
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #9f7aea, #e9d5ff); /* Lighter gradient for dark background */
+        }
+        .card-hover:hover {
+            transform: translateY(-5px); /* Slightly lift cards on hover */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1); /* Darker shadow on hover */
+        }
+        /* Styling for logos to give a grayscale effect and subtle hover */
+        .logo-item img {
+            filter: grayscale(100%); /* Make logos grayscale initially */
+            transition: all 0.3s ease-in-out;
+        }
+        .logo-item img:hover {
+            filter: grayscale(0%); /* Full color on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+        /* Basic animation for hero text */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .animate-fade-in-down {
+            animation: fadeInDown 1s ease-out forwards;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        /* Keyframe animation for horizontal scrolling logos */
+        @keyframes scroll-logos {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); } /* Scrolls half the width of the duplicated content */
+        }
+
+        .logo-scroll-container {
+            overflow: hidden; /* Hide overflowing content */
+            white-space: nowrap; /* Prevent items from wrapping */
+            width: 100%; /* Ensure it takes full width of its parent */
+        }
+
+        .logo-scroll-content {
+            display: inline-flex; /* Arrange logos in a single line */
+            animation: scroll-logos 40s linear infinite; /* Adjust duration for desired speed */
+            will-change: transform; /* Optimize for animation performance */
+        }
+        /* Ensure logos themselves don't shrink too much but fit well */
+        .logo-scroll-content .logo-item {
+            flex-shrink: 0; /* Prevent items from shrinking */
+            width: 150px; /* Base width for each logo item */
+            margin: 0 20px; /* Spacing between logos */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900 shadow-lg sticky top-0 z-50 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Company Logo/Name -->
+            <a href="#home" class="flex items-center space-x-3 md:space-x-4">
+                <!--
+                    IMPORTANT: Replace 'YOUR_HOSTED_LOGO_IMAGE_URL_HERE.png' with the actual URL
+                    of your 'ChatGPT Image Jun 10, 2025, 01_12_07 AM.png' hosted online.
+                    Example: https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/images/ChatGPT_Image_Jun_10,_2025_01_12_07_AM.png
+                -->
+                <img src="assets/images/logo.png"
+                     alt="Capnitive AI Logo - AI with a Cap"
+                     class="h-10 w-auto object-contain"
+                     onerror="this.onerror=null;this.src='https://placehold.co/40x40/4a00e0/ffffff?text=AI+Cap';" />
+                <span class="text-3xl font-extrabold text-gradient">Capnitive AI</span>
+            </a>
+            <!-- Navigation Links -->
+            <div class="hidden md:flex space-x-8 text-lg font-medium">
+                <a href="#home" class="text-gray-300 hover:text-purple-400 transition duration-300">Home</a>
+                <a href="#services" class="text-gray-300 hover:text-purple-400 transition duration-300">Services</a>
+                <a href="#about" class="text-gray-300 hover:text-purple-400 transition duration-300">About</a>
+                <a href="#experience" class="text-gray-300 hover:text-purple-400 transition duration-300">Experience</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-purple-400 transition duration-300">Testimonials</a>
+                <a href="#contact" class="text-gray-300 hover:text-purple-400 transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-purple-400 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-2 shadow-inner">
+            <a href="#home" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Home</a>
+            <a href="#services" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Services</a>
+            <a href="#about" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">About</a>
+            <a href="#experience" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Experience</a>
+            <a href="#testimonials" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Testimonials</a>
+            <a href="#contact" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="gradient-bg text-white py-24 md:py-32 text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 z-10 relative">
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
+                Capnitive AI: Innovating with Capability at the Core
+            </h1>
+            <p class="text-xl md:text-2xl font-light mb-10 opacity-90 animate-fade-in">
+                Empowering businesses with cutting-edge AI & Data solutions and guiding tech professionals to their dream careers.
+            </p>
+            <a href="#contact" class="inline-block bg-white text-purple-700 hover:bg-purple-100 font-bold py-4 px-10 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out text-lg">
+                Let's Build Your Future
+            </a>
+        </div>
+        <!-- Background decorative elements (optional, can be more complex with SVGs or JS) -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <circle cx="20" cy="80" r="15" />
+                <circle cx="80" cy="20" r="15" />
+                <rect x="50" y="50" width="30" height="30" transform="rotate(45 65 65)" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-gray-100 text-center mb-12">Our Core Capabilities</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- AI & Data Freelancing Card -->
+                <div class="bg-gray-700 p-10 rounded-2xl shadow-xl card-hover transition-all duration-300">
+                    <div class="text-purple-400 text-5xl mb-6 flex justify-center items-center">
+                        <!--
+                            IMPORTANT: Replace 'YOUR_HOSTED_LOGO_IMAGE_URL_HERE.png' with the actual URL
+                            of your 'ChatGPT Image Jun 10, 2025, 01_12_07 AM.png' hosted online.
+                            Example: https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/images/ChatGPT_Image_Jun_10,_2025_01_12_07_AM.png
+                        -->
+                        <img src="assets/images/logo.png"
+                             alt="Capnitive AI Logo - AI with a Cap"
+                             class="h-12 w-auto object-contain"
+                             onerror="this.onerror=null;this.src='https://placehold.co/48x48/4a00e0/ffffff?text=AI+Cap';" />
+                    </div>
+                    <h3 class="text-3xl font-semibold text-gray-100 text-center mb-4">AI & Data Freelancing</h3>
+                    <p class="text-gray-300 text-lg mb-6">
+                        Leverage nearly a decade of expertise to bring your AI vision to life. From robust ML model deployment to strategic data insights, we deliver impactful, production-ready solutions.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 text-md pl-4">
+                        <li>End-to-End ML/AI Solution Development & Deployment</li>
+                        <li>MLOps & DevOps Integration for Scalability</li>
+                        <li>Advanced Data Analysis & Insight Generation</li>
+                        <li>Large Language Models (LLMs) & Recommendation Systems</li>
+                        <li>Cloud-Native AI Architectures (Azure, AWS, GCP)</li>
+                        <li>Data Engineering Solutions</li>
+                    </ul>
+                </div>
+
+                <!-- Tech Job Prep Card -->
+                <div class="bg-gray-700 p-10 rounded-2xl shadow-xl card-hover transition-all duration-300">
+                    <div class="text-purple-400 text-5xl mb-6 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-semibold text-gray-100 text-center mb-4">Tech Job Prep & Career Guidance</h3>
+                    <p class="text-gray-300 text-lg mb-6">
+                        Navigate the competitive tech job market with confidence. We provide personalized coaching to refine your CV and master interviews, ensuring you land your ideal role.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 text-md pl-4">
+                        <li>Impactful CV/Resume & LinkedIn Profile Optimization</li>
+                        <li>Tailored Interview Preparation (Technical & Behavioral)</li>
+                        <li>Strategic Job Search & Application Support</li>
+                        <li>Career Path Development & Negotiation Strategies</li>
+                        <li>Leveraging AI for Job Search Efficiency</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8">About Simphiwe Zitha & Capnitive AI</h2>
+            <div class="max-w-4xl mx-auto">
+                <p class="text-lg mb-6">
+                    I am Simphiwe Zitha, a Machine Learning Scientist/Engineer with nearly a decade of hands-on experience in building and deploying efficient, accurate ML/AI solutions that drive business growth and empower strategic decision-making. My journey spans diverse industries, from **Astronomy (Academic) and Banking to Healthcare, Entertainment, Telecommunications, Retailtech, SAS, and Aviation**. This broad exposure has equipped me with a unique perspective on applying AI and Data to solve complex challenges across various sectors.
+                </p>
+                <p class="text-lg mb-6">
+                    My expertise covers a broad spectrum, including **MLOps, DevOps, Large Language Models (LLMs), recommendation systems, time series forecasting, and AI for customer value management**. I am passionate about tackling complex data and business challenges, constantly learning and quickly adapting to new technologies to ensure AI products succeed in real-world production environments.
+                </p>
+                <p class="text-lg mb-6 font-semibold">
+                    For a comprehensive overview of my professional achievements and detailed experience, please refer to my attached resume.
+                </p>
+                <div class="mt-8">
+                    <a href="https://github.com/szitha" target="_blank" class="inline-block bg-white text-purple-700 hover:bg-purple-100 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out text-md">
+                        View My GitHub Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Logos Section -->
+    <section id="experience" class="py-20 bg-gray-900 overflow-hidden"> <!-- Added overflow-hidden here -->
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-gray-100 mb-12">Our Valued Experience</h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-10">
+                Proud to have delivered significant AI and Data value to leading organizations across diverse industries.
+            </p>
+        </div>
+        <div class="logo-scroll-container">
+            <div class="logo-scroll-content">
+                <!-- Duplicate the set of logos twice to ensure seamless looping -->
+                <!-- Set 1 -->
+                <div class="logo-item">
+                    <img src="assets/images/nrf_sarao_logo.png" alt="NRF SARAO Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=NRF+SARAO';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Nedbank" alt="Nedbank Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Nedbank';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=IBM" alt="IBM Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=IBM';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Multichoice" alt="Multichoice Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Multichoice';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Vodacom" alt="Vodacom Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Vodacom';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=SAIZ" alt="SAIZ Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=SAIZ';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Data+Cybernetics" alt="Data Cybernetics Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Data+Cybernetics';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Eurowings+Digital" alt="Eurowings Digital Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Eurowings+Digital';" />
+                </div>
+
+                <!-- Set 2 (duplicate for seamless loop) -->
+                <div class="logo-item">
+                    <img src="assets/images/nrf_sarao_logo.png" alt="NRF SARAO Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=NRF+SARAO';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Nedbank" alt="Nedbank Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Nedbank';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=IBM" alt="IBM Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=IBM';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Multichoice" alt="Multichoice Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Multichoice';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Vodacom" alt="Vodacom Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Vodacom';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=SAIZ" alt="SAIZ Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=SAIZ';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Data+Cybernetics" alt="Data Cybernetics Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Data+Cybernetics';" />
+                </div>
+                <div class="logo-item">
+                    <img src="https://placehold.co/120x60/334155/e2e8f0?text=Eurowings+Digital" alt="Eurowings Digital Logo" class="h-12 object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/120x60/334155/e2e8f0?text=Eurowings+Digital';" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-12">What Our Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-700 text-gray-100 p-8 rounded-2xl shadow-xl">
+                    <p class="text-lg italic mb-6">
+                        "Simphiwe's expertise in AI and data engineering was pivotal for our project. His solutions were not only innovative but also seamlessly integrated, delivering tangible value and exceeding our expectations."
+                    </p>
+                    <p class="font-semibold text-purple-400">- Leading Tech Executive</p>
+                    <p class="text-sm text-gray-400">Client, AI Solutions</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-700 text-gray-100 p-8 rounded-2xl shadow-xl">
+                    <p class="text-lg italic mb-6">
+                        "The career guidance and CV preparation from Capnitive AI were game-changers. I landed my dream tech job much faster than I anticipated, thanks to their strategic and personalized approach."
+                    </p>
+                    <p class="font-semibold text-purple-400">- Software Engineer</p>
+                    <p class="text-sm text-gray-400">Job Prep Client</p>
+                </div>
+                <!-- Testimonial 3 (Optional - add more if you have them) -->
+                <div class="md:col-span-2 bg-gray-700 text-gray-100 p-8 rounded-2xl shadow-xl mx-auto max-w-2xl">
+                    <p class="text-lg italic mb-6">
+                        "The analytical rigor and deep understanding of ML models brought by Capnitive AI transformed our customer engagement strategy. Highly recommend for any business seeking data-driven growth."
+                    </p>
+                    <p class="font-semibold text-purple-400">- Data Science Manager</p>
+                    <p class="text-sm text-gray-400">Business Client, Data Insights</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-gray-100 mb-8">Ready to Transform Your Future?</h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-10">
+                Whether you're looking for expert AI & Data solutions or personalized career guidance, I'm here to help you achieve your goals. Let's connect!
+            </p>
+
+            <form action="https://formspree.io/f/mbjneqdy" method="POST" class="max-w-2xl mx-auto bg-gray-700 p-10 rounded-2xl shadow-xl space-y-6">
+                <div>
+                    <label for="full_name" class="block text-gray-100 text-lg font-semibold mb-2 text-left">Your Full Name:</label>
+                    <input type="text" id="full_name" name="name" required class="shadow-sm appearance-none border border-gray-600 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200 bg-gray-600 placeholder-gray-400" placeholder="e.g., Jane Doe">
+                </div>
+                <div>
+                    <label for="client_email" class="block text-gray-100 text-lg font-semibold mb-2 text-left">Your Email Address:</label>
+                    <input type="email" id="client_email" name="_replyto" required class="shadow-sm appearance-none border border-gray-600 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200 bg-gray-600 placeholder-gray-400" placeholder="e.g., your.email@example.com">
+                </div>
+                 <div>
+                    <label for="contact_subject" class="block text-gray-100 text-lg font-semibold mb-2 text-left">Subject / How can I help you?</label>
+                    <input type="text" id="contact_subject" name="subject" required class="shadow-sm appearance-none border border-gray-600 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200 bg-gray-600 placeholder-gray-400" placeholder="e.g., AI Consulting Inquiry or Job Prep Coaching">
+                </div>
+                <div>
+                    <label for="user_message" class="block text-gray-100 text-lg font-semibold mb-2 text-left">Tell me more about your needs or career goals:</label>
+                    <textarea id="user_message" name="message" rows="7" required class="shadow-sm appearance-none border border-gray-600 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200 resize-y bg-gray-600 placeholder-gray-400" placeholder="e.g., I'm looking for an ML engineer to build a custom recommendation system, or I need help preparing for a FAANG technical interview..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out text-xl">
+                    Send My Inquiry
+                </button>
+            </form>
+            <p class="text-md text-gray-400 mt-8 text-center">
+                You can also reach me directly at: <a href="mailto:discovereasai@gmail.com" class="font-medium text-purple-400 hover:underline">discovereasai@gmail.com</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-950 text-gray-400 py-8 mt-16">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>&copy; 2025 Capnitive AI. All rights reserved.</p>
+            <p class="mt-2">Innovating with Capability at the Core.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
+
